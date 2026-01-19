@@ -9,6 +9,7 @@
     $router->get('/student/add', ['StudentController', 'addStudentForm']);
     $router->post('/students', ['StudentController', 'storeStudent']);
     $router->get('/register', ['StudentController', 'register']);
+    $router->get('/login', ['StudentController', 'login']);
 
     $router->dispatch($_SERVER['REQUEST_URI']);
 ?>

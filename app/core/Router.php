@@ -1,4 +1,6 @@
 <?php
+
+require_once "../app/config/config.php";
     class Router{
         public $routes = [];
 
@@ -12,7 +14,7 @@
         public function dispatch($uri){
             $path = parse_url($uri, PHP_URL_PATH);
 
-            $basePath = '/0/1111/public';
+            $basePath = BASE_URL;
             $path = str_replace($basePath , '' ,$path);
             $path = $path ?: '/';
 

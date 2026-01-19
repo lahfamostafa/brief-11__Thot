@@ -17,7 +17,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="/login" class="space-y-4">
+        <form method="POST" action="<?= BASE_URL ?>/login" class="space-y-4">
             <div>
                 <label class="block text-gray-700 mb-1">Email</label>
                 <input
@@ -48,7 +48,7 @@
 
         <p class="text-center text-sm text-gray-600 mt-4">
             Pas encore inscrit ?
-            <a href="/register" class="text-blue-600 hover:underline">
+            <a href="<?= BASE_URL ?>/register" class="text-blue-600 hover:underline">
                 Créer un compte
             </a>
         </p>

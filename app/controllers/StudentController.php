@@ -16,7 +16,7 @@
         } 
 
         public function addStudentForm(){
-            $this->render('students_add');
+            $this->render('student_add');
         }
 
         public function login(){
@@ -28,13 +28,19 @@
         }
 
         public function storeStudent(){
-            Student::create(
+            $result = Student::create(
                 $_POST['nom'],
                 $_POST['email'],
                 $_POST['password']
             );
 
-            header('Location: /students');
+            if($result == "Email_exist"){
+                $error = "Email deja existe";
+                $this->render('student_add' , compact('error'));
+                return;
+            }
+
+            header('Location: ' .BASE_URL. '/students');
             exit;
         }
 

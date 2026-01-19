@@ -10,12 +10,18 @@ class Student
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $db->prepare("
-            INSERT INTO students (name, email, password)
-            VALUES (?, ?, ?)
-        ");
+        try {
+            $stmt = $db->prepare("
+                INSERT INTO students (name, email, password)
+                VALUES (?, ?, ?)
+            ");
+            return $stmt->execute([$name, $email, $hashedPassword]);
 
-        return $stmt->execute([$name, $email, $hashedPassword]);
+        } catch (PDOException $e) {
+            if($e->getCode() == 23000)
+                return "Email_exist" ;
+            throw $e;
+        }
     }
 
     public static function authenticate($email, $password)

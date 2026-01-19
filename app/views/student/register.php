@@ -23,7 +23,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="/register" class="space-y-4">
+        <form method="POST" action="<?= BASE_URL ?>/register" class="space-y-4">
 
             <div>
                 <label class="block text-gray-700 mb-1">Nom complet</label>
@@ -66,7 +66,7 @@
 
         <p class="text-center text-sm text-gray-600 mt-4">
             Déjà un compte ?
-            <a href="/login" class="text-blue-600 hover:underline">
+            <a href="<?= BASE_URL ?>/login" class="text-blue-600 hover:underline">
                 Se connecter
             </a>
         </p>
