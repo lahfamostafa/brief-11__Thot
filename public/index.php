@@ -8,7 +8,7 @@
     $router->get('/students', ['StudentController', 'students']);
     $router->get('/student/add', ['StudentController', 'addStudentForm']);
     $router->post('/students', ['StudentController', 'storeStudent']);
-    $router->get('/student', ['StudentController', 'showStudent']);
+    $router->get('/register', ['StudentController', 'register']);
 
     $router->dispatch($_SERVER['REQUEST_URI']);
 ?>

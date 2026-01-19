@@ -2,7 +2,7 @@
     require_once __DIR__ . '/../core/BaseController.php';
     require_once __DIR__ . '/../core/Database.php';
     require_once __DIR__ . '/../models/Student.php';
-//commit
+    
     class StudentController extends BaseController{
 
         public function index(){
@@ -10,25 +10,29 @@
         }
 
         public function students(){
-            $model = new Student();
-            $students = $model->all();
+            $students = Student::all();
 
-            $this->render('students',['students'=>$students]);
+            $this->render('students',compact('students'));
         } 
 
         public function addStudentForm(){
             $this->render('students_add');
         }
 
-        public function storeStudent(){
-            $name = trim($_POST['name'] ?? '');
-            $email = trim($_POST['email'] ?? '');
-            $pass = trim($_POST['password'] ?? '');
+        public function login(){
+            $this->render('login');
+        }
 
-            if($name !== '' && $email !== '' && $pass !== ''){
-                $model = new Student();
-                $model->create($name , $email ,$pass);
-            }
+        public function register(){
+            $this->render('register');
+        }
+
+        public function storeStudent(){
+            Student::create(
+                $_POST['nom'],
+                $_POST['email'],
+                $_POST['password']
+            );
 
             header('Location: /students');
             exit;
@@ -36,8 +40,7 @@
 
         public function showStudent(){
             $id = $_GET['id'] ?? null;
-            $model = new Student();
-            $student = $id ? $model->find($id) : null;
+            $student = Student::find($id);
 
             if(!$id){
                 echo "ID is required";
@@ -48,7 +51,7 @@
                 http_response_code(404);
             }
 
-            $this->render('student' , ['student'=>$student]);
+            $this->render('student' , compact('student'));
         }
     }
 ?>

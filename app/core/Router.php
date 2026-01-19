@@ -12,7 +12,7 @@
         public function dispatch($uri){
             $path = parse_url($uri, PHP_URL_PATH);
 
-            $basePath = '/0/2222';
+            $basePath = '/0/1111/public';
             $path = str_replace($basePath , '' ,$path);
             $path = $path ?: '/';
 
@@ -21,7 +21,7 @@
 
             if(!$action){
                 http_response_code(404);
-                echo "404 Not ound";
+                echo "404 Not found";
                 return;
             }
 

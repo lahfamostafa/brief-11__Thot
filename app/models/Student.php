@@ -47,4 +47,10 @@ class Student
 
         return $stmt->fetch();
     }
+
+    public static function all(){
+        $db = Database::connect();
+        $stm = $db->query("select id, name, email from Students");
+        return $stm->fetchAll();
+    }
 }
